@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Human {
+    // This is filed injection
+    // @Autowired
     Air air;
     Water water;
     Food food;

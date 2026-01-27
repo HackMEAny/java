@@ -1,14 +1,17 @@
 package com.example.basic.dependency_injection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Human {
-    // This is filed injection
-    // @Autowired
     Air air;
     Water water;
     Food food;
+
+    // This is filed injection, implement whenever necessary
+    @Autowired(required = false)
+    Cyclone cyclone;
 
     public Human(Air air, Water water, Food food) {
         this.air = air;
@@ -41,7 +44,7 @@ public class Human {
 
     public static void main(String args[]) {
         // Constructor based dependency injection
-        Human human = new Human(new Air(), new Water(), new Food());
+        // Human human = new Human(new Air(), new Water(), new Food());
 
         // Dependency Injection via setter method (not receomended)
         // - higher chance of error missing or forget components
@@ -50,6 +53,6 @@ public class Human {
         // human.setWater(new Water());
         // human.setFood(new Food());
 
-        human.live();
+        // human.live();
     }
 }

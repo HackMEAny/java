@@ -88,6 +88,10 @@ class executer implements Runnable {
     public void run() {
         Thread.currentThread().setName("D3f4ult -> " + Integer.toString(this.i));
         System.out.println("Run Hit -> ");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+        }
     }
 
 }
@@ -100,9 +104,9 @@ public class InterThread {
 
         // Executor
 
-        ExecutorService e = Executors.newFixedThreadPool(5);
+        ExecutorService e = Executors.newFixedThreadPool(2);
         for (int i = 0; i < 10; i++) {
-            e.execute(new executer(i));
+            e.submit(new executer(i));
         }
         e.shutdown();
     }
